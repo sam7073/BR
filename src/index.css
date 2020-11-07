@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Maplestory";
+  font-weight: bold;
+  src: local("Maplestory"),
+    url(./Assets/Fonts/Maplestory.ttf) format("truetype");
+}
+
+#root {
+  height: 100%;
+}
