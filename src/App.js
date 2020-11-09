@@ -13,16 +13,18 @@ function App() {
   }, 1000);
   return (
     <>
-      <Loader loading={loading}></Loader>
-      <BrowserRouter basename="/BR/">
-        <Link to="/">Login</Link>
-        <Link to="/123">Login</Link>
-        <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      {loading ? (
+        <Loader loading={loading}></Loader>
+      ) : (
+        <BrowserRouter basename="/BR/">
+          <Switch>
+            <Route exact path="/">
+              <Login />
+            </Route>
+            <Route path="/choose">choose page</Route>
+          </Switch>
+        </BrowserRouter>
+      )}
     </>
   );
 }

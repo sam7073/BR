@@ -1,17 +1,8 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 import "../index.css";
+import { fadein } from "./styles";
 
 const LoderDotColor = "#C30E2E";
-
-const animateLoader = keyframes`
-  0%{
-    opacity:0;
-  }
-  100%{
-    opacity:1;
-  }
-`;
 
 const animateLoaderDot = keyframes`
     0%{
@@ -28,6 +19,7 @@ const StyledLoaderSection = styled.section`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  animation: ${fadein} 1s;
 `;
 
 const StyledSpan = styled.span`
@@ -62,33 +54,35 @@ const LoaderDot = styled.span`
   }
 `;
 
-export function Loader(props) {
+export function Loader({ loading }) {
   return (
-    <StyledLoaderSection>
-      <StyledSpan>로딩중</StyledSpan>
-      <StyledSection>
-        <LoaderDot index={1}></LoaderDot>
-        <LoaderDot index={2}></LoaderDot>
-        <LoaderDot index={3}></LoaderDot>
-        <LoaderDot index={4}></LoaderDot>
-        <LoaderDot index={5}></LoaderDot>
-        <LoaderDot index={6}></LoaderDot>
-        <LoaderDot index={7}></LoaderDot>
-        <LoaderDot index={8}></LoaderDot>
-        <LoaderDot index={9}></LoaderDot>
-        <LoaderDot index={10}></LoaderDot>
-        <LoaderDot index={11}></LoaderDot>
-        <LoaderDot index={12}></LoaderDot>
-        <LoaderDot index={13}></LoaderDot>
-        <LoaderDot index={14}></LoaderDot>
-        <LoaderDot index={15}></LoaderDot>
-        <LoaderDot index={16}></LoaderDot>
-        <LoaderDot index={17}></LoaderDot>
-        <LoaderDot index={18}></LoaderDot>
-        <LoaderDot index={19}></LoaderDot>
-        <LoaderDot index={20}></LoaderDot>
-      </StyledSection>
-    </StyledLoaderSection>
+    loading && (
+      <StyledLoaderSection>
+        <StyledSpan>로딩중</StyledSpan>
+        <StyledSection>
+          <LoaderDot index={1}></LoaderDot>
+          <LoaderDot index={2}></LoaderDot>
+          <LoaderDot index={3}></LoaderDot>
+          <LoaderDot index={4}></LoaderDot>
+          <LoaderDot index={5}></LoaderDot>
+          <LoaderDot index={6}></LoaderDot>
+          <LoaderDot index={7}></LoaderDot>
+          <LoaderDot index={8}></LoaderDot>
+          <LoaderDot index={9}></LoaderDot>
+          <LoaderDot index={10}></LoaderDot>
+          <LoaderDot index={11}></LoaderDot>
+          <LoaderDot index={12}></LoaderDot>
+          <LoaderDot index={13}></LoaderDot>
+          <LoaderDot index={14}></LoaderDot>
+          <LoaderDot index={15}></LoaderDot>
+          <LoaderDot index={16}></LoaderDot>
+          <LoaderDot index={17}></LoaderDot>
+          <LoaderDot index={18}></LoaderDot>
+          <LoaderDot index={19}></LoaderDot>
+          <LoaderDot index={20}></LoaderDot>
+        </StyledSection>
+      </StyledLoaderSection>
+    )
   );
 }
 

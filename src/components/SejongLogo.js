@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../Assets/Images/logo.png";
+import logo from "../Assets/Images/Sejonglogo.png";
 
-export function Logo() {
+export function SejongLogo() {
   return (
     <div>
       <img src={logo} alt="SejongLogo" width="300px" />
@@ -9,4 +9,4 @@ export function Logo() {
   );
 }
 
-export default Logo;
+export default SejongLogo;
