@@ -1,11 +1,11 @@
 import React from "react";
-import { Logo } from "../components/Logo";
+import { SejongLogo } from "../components/SejongLogo";
 
 const div_story = {
-  title: "Logo",
+  title: "SejongLogo",
 };
 
-const Template = () => <Logo />;
+const Template = () => <SejongLogo />;
 
 export const Primary = Template.bind({});
 

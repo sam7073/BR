@@ -13,6 +13,8 @@ const StyledLogin = styled.div`
 `;
 
 const Wrapper = styled.div`
+  width: 1200px;
+  height: 850px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +24,7 @@ const StyledLogo = styled(SejongLogo)``;
 
 const LogoWrapper = styled.span`
   width: 550px;
-  height: 800px;
+  height: 850px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +33,7 @@ const LogoWrapper = styled.span`
 
 const FormWrapper = styled.span`
   width: 550px;
-  height: 800px;
+  height: 850px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { fadein } from "./styles";
 import Logo from "../Assets/Images/Logo.png";
+import { Link } from "react-router-dom";
 
 const LoginBoxWrapper = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ const LoginBoxWrapper = styled.div`
 
 const LogoWrapper = styled.div`
   width: 100%;
-  height: 200px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +31,7 @@ const LogoWrapper = styled.div`
 
 const LoginFormWrapper = styled.form`
   width: 100%;
-  height: 100px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,20 +47,54 @@ const LoginButtonWrapper = styled.div`
   justify-content: center;
 `;
 
+const LoginVerticalLine = styled.div`
+  width: 270px;
+  height: 1px;
+  background-color: #dbdbdb;
+`;
+
 const LoginButton = styled.button`
-  width: 220px;
+  width: 240px;
   height: 40px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #c8bdad;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: Maplestory;
+  font-size: 20px;
+`;
+
+const LoginSubButton = styled.button`
+  width: 240px;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: #960820;
+  cursor: pointer;
+  font-family: Maplestory;
+  font-size: 15px;
 `;
 
 const StyledTextInput = styled.input`
   width: 220px;
-  height: 50px;
+  height: 45px;
+  font-weight: bold;
   margin-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 4px;
+  border: 1px grey solid;
+  padding-left: 10px;
+  font-size: 18px;
+  font-family: Maplestory;
 `;
+
+const handleSubmitLogin = (e) => {
+  e.preventDefault();
+};
 
 export function LoginForm() {
   return (
@@ -67,16 +102,24 @@ export function LoginForm() {
       <LogoWrapper>
         <img src={Logo} alt="세종 소프트웨어 사물함 예약 사이트 로고" />
       </LogoWrapper>
-      <LoginFormWrapper>
+      <LoginFormWrapper onSubmit={handleSubmitLogin}>
         <StyledTextInput type="text" placeholder="학번"></StyledTextInput>
-        <StyledTextInput type="text" placeholder="비밀번호"></StyledTextInput>
+        <StyledTextInput
+          type="password"
+          placeholder="비밀번호"
+        ></StyledTextInput>
+        <Link to="choose">
+          <LoginButton type="submit">로그인</LoginButton>
+        </Link>
       </LoginFormWrapper>
-      <LoginButtonWrapper style={{ borderBottom: "1px black solid" }}>
-        <LoginButton>로그인</LoginButton>
-      </LoginButtonWrapper>
-      <LoginButtonWrapper>
-        <button>회원가입</button>
-        <button>비밀번호 찾기</button>
+      <LoginVerticalLine />
+      <LoginButtonWrapper style={{ marginTop: "10px" }}>
+        <Link to="/signup">
+          <LoginSubButton>회원가입</LoginSubButton>
+        </Link>
+        <Link to="/findpwd">
+          <LoginSubButton>비밀번호 찾기</LoginSubButton>
+        </Link>
       </LoginButtonWrapper>
     </LoginBoxWrapper>
   );
