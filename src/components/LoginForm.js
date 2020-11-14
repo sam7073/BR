@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { fadein } from "./styles";
 import Logo from "../Assets/Images/Logo.png";
 import { Link } from "react-router-dom";
+import { authService } from "../fb";
 
 const LoginBoxWrapper = styled.div`
   display: flex;
@@ -92,25 +93,51 @@ const StyledTextInput = styled.input`
   font-family: Maplestory;
 `;
 
-const handleSubmitLogin = (e) => {
-  e.preventDefault();
-};
-
 export function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const onChange = (event) => {
+    const {
+      target: { name, value },
+    } = event;
+    if (name === "email") {
+      setEmail(value);
+    } else {
+      setPassword(value);
+    }
+  };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await authService.signInWithEmailAndPassword(
+        email,
+        password
+      );
+    } catch (err) {}
+  };
   return (
     <LoginBoxWrapper>
       <LogoWrapper>
         <img src={Logo} alt="세종 소프트웨어 사물함 예약 사이트 로고" />
       </LogoWrapper>
-      <LoginFormWrapper onSubmit={handleSubmitLogin}>
-        <StyledTextInput type="text" placeholder="학번"></StyledTextInput>
+      <LoginFormWrapper onSubmit={onSubmit}>
         <StyledTextInput
+          name="email"
+          type="email"
+          placeholder="이메일"
+          required
+          value={email}
+          onChange={onChange}
+        ></StyledTextInput>
+        <StyledTextInput
+          name="password"
           type="password"
           placeholder="비밀번호"
+          required
+          value={password}
+          onChange={onChange}
         ></StyledTextInput>
-        <Link to="choose">
-          <LoginButton type="submit">로그인</LoginButton>
-        </Link>
+        <LoginButton type="submit">로그인</LoginButton>
       </LoginFormWrapper>
       <LoginVerticalLine />
       <LoginButtonWrapper style={{ marginTop: "10px" }}>

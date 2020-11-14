@@ -1,55 +1,47 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 
-import { Login } from "./routes/Login";
-import { Signup } from "./routes/Signup";
-import { FindPwd } from "./routes/FindPwd";
-import { Choose } from "./routes/Choose";
-
-import { Footer } from "./components/Footer";
 import { Loader } from "./components/Loader";
+import { Footer } from "./components/Footer";
 import "./App.css";
 
 import styled from "styled-components";
+import AppRouter from "./routes/AppRouter";
+
+import { authService } from "./fb";
 
 const StyledBrowserRouter = styled(BrowserRouter)`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
+const Wrapper = styled.div`
+  height: 100%;
+`;
+
 function App() {
-  const [loading, setLoading] = useState(true);
-  setTimeout(() => {
-    setLoading(false);
-  }, 1000);
+  const [init, setInit] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    });
+  });
   return (
-    <>
-      {loading ? (
-        <Loader loading={loading}></Loader>
-      ) : (
-        <StyledBrowserRouter basename="/BR/">
-          <Switch>
-            <Route exact path="/">
-              <Login />
-            </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/findpwd">
-              <FindPwd />
-            </Route>
-            <Route path="/choose">
-              <Choose />
-            </Route>
-          </Switch>
-          <Footer></Footer>
-        </StyledBrowserRouter>
-      )}
-    </>
+    <Wrapper>
+      <StyledBrowserRouter basename="/BR/">
+        {init ? <AppRouter isLoggedIn={isLoggedIn} /> : <Loader loading />}
+      </StyledBrowserRouter>
+      <Footer />
+    </Wrapper>
   );
 }
 

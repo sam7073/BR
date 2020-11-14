@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { fadein } from "../components/styles";
 import Logo from "../Assets/Images/Logo.png";
 import "../index.css";
+import { authService } from "../fb";
 
 const FindPwdWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,20 +71,38 @@ const FindPwdButton = styled.button`
   cursor: pointer;
 `;
 
-const handleFindPwdSubmit = (e) => {
-  e.preventDefault();
-};
-
 export function FindPwd() {
+  const [email, setEmail] = useState("");
+  const onChange = (e) => {
+    setEmail(e.target.value);
+  };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await authService
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        alert("이메일 발송 완료!");
+        window.history.back();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <FindPwdWrapper>
       <FindPwdBox>
         <LogoWrapper>
           <img src={Logo} alt="세종 소프트웨어 사물함 예약 사이트 로고" />
         </LogoWrapper>
-        <FindPwdForm onSubmit={handleFindPwdSubmit}>
+        <FindPwdForm onSubmit={onSubmit}>
           <FindPwdInput type="text" placeholder="학번"></FindPwdInput>
-          <FindPwdInput type="text" placeholder="이메일"></FindPwdInput>
+          <FindPwdInput
+            name="email"
+            type="email"
+            placeholder="이메일"
+            value={email}
+            onChange={onChange}
+          ></FindPwdInput>
           <FindPwdButton type="submit">이메일 발송</FindPwdButton>
           <FindPwdButton onClick={() => window.history.back()}>
             뒤로가기

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { fadein } from "../components/styles";
 import Logo from "../Assets/Images/Logo.png";
 import "../index.css";
+import { authService } from "../fb";
 
 const SignupWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,21 +72,55 @@ const SignupButton = styled.button`
   cursor: pointer;
 `;
 
-const handleSignupSubmit = (e) => {
-  e.preventDefault();
-};
-
 export function Signup() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const onChange = (e) => {
+    const {
+      target: { name, value },
+    } = e;
+    if (name === "email") {
+      setEmail(value);
+    } else {
+      setPassword(value);
+    }
+  };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await authService.createUserWithEmailAndPassword(email, password);
+      window.history.back();
+    } catch (err) {
+      if (err.code === "auth/email-already-in-use") {
+        console.log("already");
+        alert("이미 가입된 이메일입니다.");
+      } else if (err.code === "auth/weak-password") {
+        alert("너무 취약한 비밀번호입니다.");
+      }
+    }
+  };
   return (
     <SignupWrapper>
       <SignupBox>
         <LogoWrapper>
           <img src={Logo} alt="세종 소프트웨어 사물함 예약 사이트 로고" />
         </LogoWrapper>
-        <SignupForm onSubmit={handleSignupSubmit}>
+        <SignupForm onSubmit={onSubmit.bind(this)}>
           <SignupInput type="text" placeholder="학번" />
-          <SignupInput type="text" placeholder="이메일" />
-          <SignupInput type="password" placeholder="비밀번호" />
+          <SignupInput
+            name="email"
+            type="email"
+            placeholder="이메일"
+            required
+            onChange={onChange}
+          />
+          <SignupInput
+            name="password"
+            type="password"
+            placeholder="비밀번호"
+            required
+            onChange={onChange}
+          />
           <SignupInput type="password" placeholder="비밀번호 확인" />
           <SignupButton type="submit">가입하기</SignupButton>
           <SignupButton onClick={() => window.history.back()}>
