@@ -9,7 +9,6 @@ export function Cabinet1() {
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ];
-
   tmp.map((item) => {
     console.log(item);
   });
