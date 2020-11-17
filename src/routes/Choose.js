@@ -58,7 +58,7 @@ export function Choose() {
           </LogoutButton>
         </LogoLogoutWrapper>
         <Navigation />
-        <Card width="1024px" height="600px">
+        <Card width="1024px" height="630px">
           <Route path="/C1">
             <Cabinet1 />
           </Route>
