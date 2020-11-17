@@ -14,5 +14,4 @@ export function Cabinet1() {
   });
   return <div>1번 사물함 현황</div>;
 }
-
 export default Cabinet1;
