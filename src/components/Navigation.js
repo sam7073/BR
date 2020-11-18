@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../index.css";
@@ -15,13 +15,14 @@ const StyledNav = styled.div`
 `;
 
 const StyledNavButton = styled.div`
-  width: 150px;
+  width: 130px;
   height: 60px;
   margin: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
 
+  font-size: 20px;
   font-weight: bold;
   font-family: Maplestory;
   text-decoration: none;
@@ -34,15 +35,44 @@ const StyledNavButton = styled.div`
 `;
 
 export function Navigation() {
+  useEffect(() => {
+    const items = document.getElementsByClassName("NB");
+    const num = window.location.href[window.location.href.length - 1];
+    if (num === "p") {
+      items[0].classList.add("activated");
+    } else if (num === "1") {
+      items[1].classList.add("activated");
+    } else if (num === "2") {
+      items[2].classList.add("activated");
+    } else if (num === "3") {
+      items[3].classList.add("activated");
+    } else if (num === "4") {
+      items[4].classList.add("activated");
+    } else if (num === "5") {
+      items[5].classList.add("activated");
+    } else if (num === "y") {
+      console.log(items);
+      items[6].classList.add("activated");
+    } else {
+    }
+  }, []);
+
   const onClick = (e) => {
     const items = document.getElementsByClassName("NB");
     for (let index = 0; index < items.length; index++) {
       items[index].classList.remove("activated");
+      if (items[index] === e.target) {
+        items[index].classList.add("activated");
+      }
     }
-    e.target.classList.add("activated");
   };
   return (
     <StyledNav>
+      <Link to="/map" style={{ textDecoration: "none", color: "black" }}>
+        <StyledNavButton onClick={onClick} className="NB">
+          사물함 지도
+        </StyledNavButton>
+      </Link>
       <Link to="/C1" style={{ textDecoration: "none", color: "black" }}>
         <StyledNavButton onClick={onClick} className="NB">
           1번 사물함

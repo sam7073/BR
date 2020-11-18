@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import "../index.css";
 
-const StyledFree = styled.span`
+const StyledFree = styled.button`
   width: 100px;
   height: 100px;
-  background: ${(props) => (props.i % 2 === 0 ? "#EEEDE3" : "#960820")};
   background: #eeede3;
 
   display: inline-flex;
@@ -13,14 +12,29 @@ const StyledFree = styled.span`
   align-items: center;
 
   margin: 1px;
+  border: none;
   border-radius: 5px;
 
   font-family: Maplestory;
+  font-size: 18px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export function Free(props) {
-  console.log(props.index1);
-  return <StyledFree {...props}>예약 가능</StyledFree>;
+  const onClick = (e) => {
+    e.target.style.background = "#FAE32C";
+
+    e.target.innerHTML = "예약 함";
+    console.log(e.target.id.split("_"));
+  };
+  return (
+    <StyledFree {...props} onClick={onClick} className="locker">
+      예약 가능
+    </StyledFree>
+  );
 }
 
 export default Free;

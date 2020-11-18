@@ -15,10 +15,15 @@ const StyledOccupied = styled.span`
   border-radius: 5px;
 
   font-family: Maplestory;
+  font-size: 15px;
 `;
 
 export function Occupied(props) {
-  return <StyledOccupied {...props}>예약됨</StyledOccupied>;
+  return (
+    <StyledOccupied {...props} className="locker">
+      예약 됨
+    </StyledOccupied>
+  );
 }
 
 export default Occupied;

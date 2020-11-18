@@ -2,26 +2,20 @@ import React from "react";
 import Free from "../components/Free";
 import Occupied from "../components/Occupied";
 
-export function Cabinet3() {
-  const tmp = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 0, 1, 1],
-    [1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-    [1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 1, 1, 0, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  ];
+export function Cabinet3({ locker, setLocker }) {
   return (
     <div>
-      {tmp.map((items, index1) => {
-        const arr = items.map((item, index2) => {
+      {locker.map((items, i) => {
+        const arr = items.map((item, j) => {
           if (item === 1) {
-            return <Free i={index1 + index2} />;
+            return (
+              <Free key={i + j} id={"3_" + i + "_" + j} setLocker={setLocker} />
+            );
           } else {
-            return <Occupied />;
+            return <Occupied key={i + j} id={"3_" + i + "_" + j} />;
           }
         });
-        return <div>{arr}</div>;
+        return <div key={i}>{arr}</div>;
       })}
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Card } from "../components/Card";
 import Logo from "../Assets/Images/Logo.png";
@@ -7,6 +7,7 @@ import { authService } from "../fb";
 import { fadein } from "../components/styles";
 import { Navigation } from "../components/Navigation";
 import { Route } from "react-router";
+import { Map } from "../components/Map";
 import { Cabinet1 } from "../components/Cabinet1";
 import { Cabinet2 } from "../components/Cabinet2";
 import { Cabinet3 } from "../components/Cabinet3";
@@ -48,6 +49,46 @@ export function Choose() {
   const onClick = () => {
     authService.signOut();
   };
+  const [locker1, setLocker1] = useState([
+    [1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+  ]);
+  const [locker2, setLocker2] = useState([
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+    [1, 1, 1, 1, 1, 1, 0, 0, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 0, 0, 0, 1],
+  ]);
+  const [locker3, setLocker3] = useState([
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 0],
+    [0, 0, 1, 0, 1, 1],
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1],
+  ]);
+  const [locker4, setLocker4] = useState([
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1],
+    [1, 1, 0, 1, 0, 0],
+    [1, 1, 1, 1, 0, 1],
+    [0, 1, 1, 1, 0, 1],
+    [1, 1, 1, 1, 1, 1],
+  ]);
+  const [locker5, setLocker5] = useState([
+    [1, 1, 0, 1, 1, 1],
+    [1, 0, 0, 1, 1, 0],
+    [1, 1, 0, 1, 1, 1],
+    [0, 1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1],
+  ]);
   return (
     <ChooseWrapper>
       <ChooseBox>
@@ -59,20 +100,23 @@ export function Choose() {
         </LogoLogoutWrapper>
         <Navigation />
         <Card width="1024px" height="630px">
+          <Route path="/map">
+            <Map />
+          </Route>
           <Route path="/C1">
-            <Cabinet1 />
+            <Cabinet1 locker={locker1} setLocker={setLocker1} />
           </Route>
           <Route path="/C2">
-            <Cabinet2 />
+            <Cabinet2 locker={locker2} setLocker={setLocker2} />
           </Route>
           <Route path="/C3">
-            <Cabinet3 />
+            <Cabinet3 locker={locker3} setLocker={setLocker3} />
           </Route>
           <Route path="/C4">
-            <Cabinet4 />
+            <Cabinet4 locker={locker4} setLocker={setLocker4} />
           </Route>
           <Route path="/C5">
-            <Cabinet5 />
+            <Cabinet5 locker={locker5} setLocker={setLocker5} />
           </Route>
           <Route path="/my">
             <My />
