@@ -113,6 +113,7 @@ export function LoginForm() {
         email,
         password
       );
+      console.log(data);
     } catch (err) {}
   };
   return (

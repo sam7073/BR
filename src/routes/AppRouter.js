@@ -6,10 +6,10 @@ import { Signup } from "../routes/Signup";
 import { FindPwd } from "../routes/FindPwd";
 import { Choose } from "../routes/Choose";
 
-function AppRouter({ isLoggedIn }) {
+function AppRouter({ isLoggedIn, email }) {
   return isLoggedIn ? (
     <>
-      <Choose />
+      <Choose email={email} />
     </>
   ) : (
     <>

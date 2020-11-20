@@ -25,9 +25,11 @@ const Wrapper = styled.div`
 function App() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
+  const [email, setEmail] = useState("");
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
+        setEmail(user.email);
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
@@ -38,7 +40,11 @@ function App() {
   return (
     <Wrapper>
       <StyledBrowserRouter basename="/BR/">
-        {init ? <AppRouter isLoggedIn={isLoggedIn} /> : <Loader loading />}
+        {init ? (
+          <AppRouter isLoggedIn={isLoggedIn} email={email} />
+        ) : (
+          <Loader loading />
+        )}
       </StyledBrowserRouter>
       <Footer />
     </Wrapper>

@@ -34,7 +34,7 @@ const StyledNavButton = styled.div`
   }
 `;
 
-export function Navigation() {
+export function Navigation({ setCurrentMenu }) {
   useEffect(() => {
     const items = document.getElementsByClassName("NB");
     const num = window.location.href[window.location.href.length - 1];
@@ -63,6 +63,7 @@ export function Navigation() {
       items[index].classList.remove("activated");
       if (items[index] === e.target) {
         items[index].classList.add("activated");
+        setCurrentMenu(index);
       }
     }
   };
