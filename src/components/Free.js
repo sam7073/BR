@@ -11,11 +11,9 @@ const StyledFree = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
   margin: 1px;
   border: none;
   border-radius: 5px;
-
   font-family: Maplestory;
   font-size: 18px;
 
