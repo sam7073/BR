@@ -1,22 +1,23 @@
 {
   "files": {
     "main.css": "/BR/static/css/main.66a0f91c.chunk.css",
-    "main.js": "/BR/static/js/main.223fbd1f.chunk.js",
-    "main.js.map": "/BR/static/js/main.223fbd1f.chunk.js.map",
-    "runtime-main.js": "/BR/static/js/runtime-main.f1c32935.js",
-    "runtime-main.js.map": "/BR/static/js/runtime-main.f1c32935.js.map",
-    "static/js/2.43760c2c.chunk.js": "/BR/static/js/2.43760c2c.chunk.js",
-    "static/js/2.43760c2c.chunk.js.map": "/BR/static/js/2.43760c2c.chunk.js.map",
+    "main.js": "/BR/static/js/main.b960f267.chunk.js",
+    "main.js.map": "/BR/static/js/main.b960f267.chunk.js.map",
+    "runtime-main.js": "/BR/static/js/runtime-main.3bb39e8e.js",
+    "runtime-main.js.map": "/BR/static/js/runtime-main.3bb39e8e.js.map",
+    "static/js/2.8390367c.chunk.js": "/BR/static/js/2.8390367c.chunk.js",
+    "static/js/2.8390367c.chunk.js.map": "/BR/static/js/2.8390367c.chunk.js.map",
     "index.html": "/BR/index.html",
     "static/css/main.66a0f91c.chunk.css.map": "/BR/static/css/main.66a0f91c.chunk.css.map",
-    "static/js/2.43760c2c.chunk.js.LICENSE.txt": "/BR/static/js/2.43760c2c.chunk.js.LICENSE.txt",
+    "static/js/2.8390367c.chunk.js.LICENSE.txt": "/BR/static/js/2.8390367c.chunk.js.LICENSE.txt",
     "static/media/index.css": "/BR/static/media/Maplestory.e3928722.ttf",
-    "static/media/Sejonglogo.fb16eeb7.png": "/BR/static/media/Sejonglogo.fb16eeb7.png"
+    "static/media/Sejonglogo.fb16eeb7.png": "/BR/static/media/Sejonglogo.fb16eeb7.png",
+    "static/media/map.2c821326.png": "/BR/static/media/map.2c821326.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f1c32935.js",
-    "static/js/2.43760c2c.chunk.js",
+    "static/js/runtime-main.3bb39e8e.js",
+    "static/js/2.8390367c.chunk.js",
     "static/css/main.66a0f91c.chunk.css",
-    "static/js/main.223fbd1f.chunk.js"
+    "static/js/main.b960f267.chunk.js"
   ]
 }
